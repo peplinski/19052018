@@ -11,10 +11,11 @@ public class Dziekanat {
     File plik = new File("studenci.txt");
 
     public Dziekanat() {
+        loadStudentow();
     }
 
     public void dodajStudenta(Student student) {
-        Optional<Student> jesliIstnieje = wybierzStudenta(student.getNrIndexu());
+        Optional<Student> jesliIstnieje = wyszukajStudenta(student.getNrIndexu());
         if (jesliIstnieje.isPresent()) {
             System.out.println("Student istnieje, nie dodaję");
             return;
@@ -28,7 +29,7 @@ public class Dziekanat {
         saveStudenta();
     }
 
-    public Optional<Student> wybierzStudenta(String numerIndeksu) {
+    public Optional<Student> wyszukajStudenta(String numerIndeksu) {
         return studentList.stream()
                 .filter(student -> student.getNrIndexu()
                         .equals(numerIndeksu)).findFirst();
@@ -39,12 +40,11 @@ public class Dziekanat {
                 .stream()
                 .filter(student -> student.getRokStudiow() == rokStudiow)
                 .collect(Collectors.toList());
-
     }
 
     public boolean usunStudenta(String numerIndeksu) {
         ///przypisanie studenta do zmiennej
-        Optional<Student> temp = wybierzStudenta(numerIndeksu);
+        Optional<Student> temp = wyszukajStudenta(numerIndeksu);
         //jesli student istnieje
         if (temp.isPresent()) {
             //usuwam studenta z listy wyciagajac z optionala
@@ -63,8 +63,12 @@ public class Dziekanat {
             e.printStackTrace();
         }
     }
+    public void wypiszStudentow(){
+        studentList.stream().forEach(student -> System.out.println(student));
+       // dziekanat.wyszukajStudenta(sc.nextLine())
+    }
 
-    public void loadPacjentow() {
+    public void loadStudentow() {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(plik));
             bufferedReader.lines().forEach(linia -> {
@@ -90,7 +94,6 @@ public class Dziekanat {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 
