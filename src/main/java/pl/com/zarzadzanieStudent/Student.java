@@ -67,13 +67,11 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "nrIndexu=" + nrIndexu +
-                ", rokStudiow=" + rokStudiow +
-                ", sredniaOcen=" + sredniaOcen +
-                ", imie='" + imie + '\'' +
-                ", nazwisko='" + nazwisko + '\'' +
-                ", wiek=" + wiek +
-                '}';
+        return nrIndexu +
+                ";" + rokStudiow +
+                ";" + sredniaOcen +
+                ";" + imie +
+                ";" + nazwisko +
+                ";" + wiek;
     }
 }

@@ -24,4 +24,5 @@ Dodatkowe*: Klasa registration desk powinna w konstruktorze próbować załadowa
 która wyświetli proste menu i będzie pobierała input od użytkownika.
  Użytkownik powinien mieć możliwość dodawania nowych studentów (podając poszczególne informacje
  jedna po drugiej), wyświetlania konkretnego studenta, etc. (wykorzystując resztę metod z Dziekanatu).
-  W klasie pl.com.rejestracjaPacjenta.Main powinna zostać tylko stworzona instancja DziekanatTUI i wywołana na niej metoda start().
+  W klasie pl.com.rejestracjaPacjenta.Main powinna zostać tylko stworzona instancja DziekanatTUI
+   i wywołana na niej metoda start().
