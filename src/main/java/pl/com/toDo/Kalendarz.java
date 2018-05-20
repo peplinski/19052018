@@ -1,30 +1,27 @@
 package pl.com.toDo;
-
-import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
-
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Kalendarz {
-    private LocalDate localDate;
-    Notatka notatka = new Notatka();
-
     public Kalendarz() {
         loadFile();
     }
 
-    public LocalDate getLocalDate() {
-        return localDate;
-    }
 
-    private List<Notatka> notatkaList = new ArrayList<>();
-    File file = new File("notatki\\", String.valueOf(this.localDate));
+    public List<Notatka> notatkaList = new ArrayList<>();
+    File file = new File("notatki\\note.txt");
 
 
     public void addNotatke(Notatka notatka){
+        Optional<Notatka> czyIstnieje = getNotatka(notatka.getText());
+        if (czyIstnieje.isPresent()){
+            System.out.println("Nie dodało nic do listy lub jest null");
+            return;
+        }
         if (notatkaList==null){
             notatkaList=new ArrayList<>();
         }else {
@@ -32,7 +29,13 @@ public class Kalendarz {
         }
         saveFile();
     }
-    public void wyswietlNotatki(LocalDateTime dateTime){
+    public Optional<Notatka>getNotatka(String t){
+        return notatkaList
+                .stream()
+                .filter(text ->text.getText()
+                        .equals(text)).findFirst();
+    }
+    public void wyswietlNotatki(LocalDate dateTime){
         notatkaList
                 .stream()
                 .filter(notatka -> notatka.getDate()==dateTime)
@@ -62,10 +65,12 @@ public class Kalendarz {
             bReader.lines().forEach(linia->{
                 //split
                 String[] table=linia.split("#");
+                String t1=table[0];
                 Typ typ=Typ.valueOf(table[1]);
-                LocalDateTime dateTime=LocalDateTime.parse(table[4]);
+                String t3=table[3];
+                LocalDate dateTime=LocalDate.parse(table[4]);
 
-                Notatka notatka=new Notatka(table[0],typ,table[2],dateTime);
+                Notatka notatka=new Notatka(t1,typ,t3,dateTime );
                 notatkaList.add(notatka);
                     });
             bReader.close();

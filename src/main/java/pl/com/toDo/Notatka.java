@@ -1,22 +1,21 @@
 package pl.com.toDo;
 
 
-import org.joda.time.LocalDateTime;
+
+
+import java.time.LocalDate;
 
 public class Notatka {
     private String title;
     private Typ typ;
     private String text;
-    private LocalDateTime date;
+    private LocalDate date;
 
-    public Notatka(String title, Typ typ, String text, LocalDateTime date) {
+    public Notatka(String title, Typ typ, String text, LocalDate date) {
         this.title = title;
         this.typ = typ;
         this.text = text;
         this.date = date;
-    }
-
-    public Notatka() {
     }
 
     public String getTitle() {
@@ -43,21 +42,19 @@ public class Notatka {
         this.text = text;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
     @Override
     public String toString() {
-        return "Notatka{" +
-                "title='" + title + '\'' +
-                ", typ=" + typ +
-                ", text='" + text + '\'' +
-                ", date=" + date +
-                '}';
+        return title+
+                "#" + typ +
+                "#" + text+
+                "#" + date ;
     }
 }
