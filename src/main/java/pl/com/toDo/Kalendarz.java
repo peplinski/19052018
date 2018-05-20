@@ -1,7 +1,12 @@
 package pl.com.toDo;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -67,8 +72,8 @@ public class Kalendarz {
                 String[] table=linia.split("#");
                 String t1=table[0];
                 Typ typ=Typ.valueOf(table[1]);
-                String t3=table[3];
-                LocalDate dateTime=LocalDate.parse(table[4]);
+                String t3=table[2];
+                LocalDate dateTime=LocalDate.parse(table[3], DateTimeFormatter.ofPattern("dd mm yyyy"));
 
                 Notatka notatka=new Notatka(t1,typ,t3,dateTime );
                 notatkaList.add(notatka);
@@ -78,6 +83,16 @@ public class Kalendarz {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    public void parseDate(){
+        try {
+           String target = "2018-05-20";
+            DateFormat df = new SimpleDateFormat("");
+            Date result =  df.parse(target);
+            System.out.println(result);
+        } catch (ParseException pe) {
+            pe.printStackTrace();
         }
     }
 }
