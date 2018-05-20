@@ -62,7 +62,10 @@ public class Kalendarz {
             bReader.lines().forEach(linia->{
                 //split
                 String[] table=linia.split("#");
-                Notatka notatka=new Notatka(table[0],table[1],table[2],table[4])
+                Typ typ=Typ.valueOf(table[1]);
+                LocalDateTime dateTime=LocalDateTime.parse(table[4]);
+
+                Notatka notatka=new Notatka(table[0],typ,table[2],dateTime);
                 notatkaList.add(notatka);
                     });
             bReader.close();
