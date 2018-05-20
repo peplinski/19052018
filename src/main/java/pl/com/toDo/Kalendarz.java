@@ -4,7 +4,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -73,7 +72,7 @@ public class Kalendarz {
                 String t1=table[0];
                 Typ typ=Typ.valueOf(table[1]);
                 String t3=table[2];
-                LocalDate dateTime=LocalDate.parse(table[3], DateTimeFormatter.ofPattern("dd mm yyyy"));
+                LocalDate dateTime= LocalDate.parse(table[3]);
 
                 Notatka notatka=new Notatka(t1,typ,t3,dateTime );
                 notatkaList.add(notatka);
@@ -88,7 +87,7 @@ public class Kalendarz {
     public void parseDate(){
         try {
            String target = "2018-05-20";
-            DateFormat df = new SimpleDateFormat("");
+            DateFormat df = new SimpleDateFormat("2018-05-20");
             Date result =  df.parse(target);
             System.out.println(result);
         } catch (ParseException pe) {
@@ -96,3 +95,6 @@ public class Kalendarz {
         }
     }
 }
+/*@Krzysiek wspominałeś, że masz foramt RRRR-MM-DD
+a Twoja parser przyjmuje (dd mm rrrr)
+LocalDate dateTime=LocalDate.parse(table[3], *DateTimeFormatter.ofPattern("dd mm yyyy*"));*/
