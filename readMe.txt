@@ -6,7 +6,7 @@ oraz getPatient(String pesel).
 Dodatkowe*: Klasa registration desk powinna w konstruktorze próbować załadować pacjentów
  z pliku oraz powinna ich zapisywać do pliku przy każdym dodaniu pacjenta
 
-2.1 Napisz aplikację do zarządzania studentami. Będzie działać w podobny sposób,
+1.2 Napisz aplikację do zarządzania studentami. Będzie działać w podobny sposób,
  co aplikacja z zadania pierwszego. Potrzebne będą klasy:
 -Student - klasa reprezentująca studenta. Student powinien mieć swój id
  (np. numer indeksu), rok studiów, średnią ocen i pozostałe dane osobowe
@@ -26,3 +26,13 @@ która wyświetli proste menu i będzie pobierała input od użytkownika.
  jedna po drugiej), wyświetlania konkretnego studenta, etc. (wykorzystując resztę metod z Dziekanatu).
   W klasie pl.com.rejestracjaPacjenta.Main powinna zostać tylko stworzona instancja DziekanatTUI
    i wywołana na niej metoda start().
+
+   Zadanie 1.3.
+   Słownik polsko –angielski.Zaimplementuj słownik polsko –angielski.
+   Utwórz klasę Wpis, która będzie zawierała dwa pola typu String –slowoPolskie i slowoAngielskie.
+   Następnie utwórz klasę Słownik, zawierającąHashMapę oraz operacje: dodajWpis–metoda dodając
+    do mapy gdzie kluczem jest słowo polskie, a wartością słowo angielskie -oraz znajdzTlumaczenie.
+   W klasie Main utwórz kilka wpisów i dodaj je do słownika.
+   Następnie zaimplementuj interakcję użytkownika z programem.
+
+   *Zapisuj wpisy do pliku i ładuj je z pliku przy załadowaniu aplikacji.

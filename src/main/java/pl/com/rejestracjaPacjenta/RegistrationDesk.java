@@ -14,11 +14,10 @@ public class RegistrationDesk {
     File plik = new File("C:\\Workspace\\Pacjent\\rejestracja.txt");
 
 
-
     public void addPacjent(Pacjent pacjent) {
 //szukam pacjeta jesli obecny to nie dodaje
         Optional<Pacjent> szukany = getPacjent(pacjent.getPesel());
-        if(szukany.isPresent()) {
+        if (szukany.isPresent()) {
             System.out.println("Pacjent znaleziony, nie dodaje");
             return;
         }
@@ -37,7 +36,7 @@ public class RegistrationDesk {
                         .equals(pesel)).findFirst();
     }
 
-    public void savePacjentow(){
+    public void savePacjentow() {
         try {
             PrintWriter printWriter = new PrintWriter(plik);
             pacjentList.stream().forEach(pacjent -> printWriter.println(pacjent));
@@ -48,14 +47,14 @@ public class RegistrationDesk {
 
     }
 
-    public void loadPacjentow(){
+    public void loadPacjentow() {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(plik));
-            bufferedReader.lines().forEach(linia ->{
+            bufferedReader.lines().forEach(linia -> {
                 //split
                 String[] tablica = linia.split(";");
-           //dodanie pacjentow
-                addPacjent(new Pacjent(tablica[0], tablica[1],tablica[2]));
+                //dodanie pacjentow
+                addPacjent(new Pacjent(tablica[0], tablica[1], tablica[2]));
             });
             bufferedReader.close();
         } catch (FileNotFoundException e) {
@@ -63,6 +62,5 @@ public class RegistrationDesk {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
