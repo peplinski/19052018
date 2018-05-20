@@ -11,7 +11,7 @@ public class RegistrationDesk {
     }
 
     private List<Pacjent> pacjentList = new ArrayList<Pacjent>();
-    File plik = new File("C:\\Workspace\\Pacjent\\rejestracja.txt");
+    File plik = new File("rejestracja.txt");
 
 
     public void addPacjent(Pacjent pacjent) {

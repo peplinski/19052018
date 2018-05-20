@@ -5,7 +5,7 @@ oraz getPatient(String pesel).
 
 Dodatkowe*: Klasa registration desk powinna w konstruktorze próbować załadować pacjentów
  z pliku oraz powinna ich zapisywać do pliku przy każdym dodaniu pacjenta
-
+*******************************************************************************************************************
 1.2 Napisz aplikację do zarządzania studentami. Będzie działać w podobny sposób,
  co aplikacja z zadania pierwszego. Potrzebne będą klasy:
 -Student - klasa reprezentująca studenta. Student powinien mieć swój id
@@ -26,7 +26,7 @@ która wyświetli proste menu i będzie pobierała input od użytkownika.
  jedna po drugiej), wyświetlania konkretnego studenta, etc. (wykorzystując resztę metod z Dziekanatu).
   W klasie pl.com.rejestracjaPacjenta.Main powinna zostać tylko stworzona instancja DziekanatTUI
    i wywołana na niej metoda start().
-
+******************************************************************************************************************
    Zadanie 1.3.
    Słownik polsko –angielski.Zaimplementuj słownik polsko –angielski.
    Utwórz klasę Wpis, która będzie zawierała dwa pola typu String –slowoPolskie i slowoAngielskie.
@@ -36,3 +36,24 @@ która wyświetli proste menu i będzie pobierała input od użytkownika.
    Następnie zaimplementuj interakcję użytkownika z programem.
 
    *Zapisuj wpisy do pliku i ładuj je z pliku przy załadowaniu aplikacji.
+   *****************************************************************************************************************
+   Zadanie 1.4. Kalendarz
+   Napisz program, który będzie symulował działanie kalendarza z notatkami.
+   Kalendarz powinien wspierać operacje takie jak: dodajNotatke, wyswietlNotatki(data), wyswietlWszystkieNotatki.
+   Metoda dodajNotatke powinna zapisywać ją do pliku.
+   Metoda wyświetlNotatki(data) ma odczytać notatki z plików dla podanego dnia.
+   Metoda wyswietlWszystkieNotatki niech wyświetliwszystkie do tej pory zapisane notatki.
+
+   Wskazówki implementacyjne:
+   -Klasa Notatka(tytuł, typ, treść, data (LocalDateTime)),
+   -Enum typNotatki(np.wydarzenie, spotkanie, święto),
+   -Klasa kalendarz –niech zawiera wymienione wyżej operacje oraz atrybut List<Notatka>.
+
+
+   Zapisywanie wersja 1*: zapisywać każdą notatkę do innego pliku,
+   a w miejsce jego nazwy umieszczać datę utworzonej notatki.
+    Wszystkie notatki z jednego dnia umieścić w jednym katalogu (nazwakataloguw postaci Daty bez czasu).
+
+   Zapisywanie wersja 2*: zapisuj wszystkie notatki w jednym pliku i przepisuj plik od nowa.
+
+   Obsłuż interakcję z użytkownikiem z poziomu konsoli.
